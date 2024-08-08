@@ -6,7 +6,7 @@ First Java Project
 Classic pong game + parry mechanic
 <br>
 
-* Player1:
+* Player 1:
   	<br>
 
     * up - w
@@ -14,7 +14,7 @@ Classic pong game + parry mechanic
     * parry - e
 <br>
 
-* Player2:
+* Player 2:
   	<br>
 
     * up - up arrow

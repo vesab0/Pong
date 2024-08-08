@@ -14,6 +14,10 @@ public class Window extends JFrame implements Runnable {
     public PlayerController2 playerController2;
     public Ball ball;
 
+    int score = 0;
+    int score1 = 0;
+    
+
     public Window(){
         this.setSize(Constants.SCREEN_WIDTH,Constants.SCREEN_HEIGHT);
         this.setTitle("pong");
@@ -31,8 +35,9 @@ public class Window extends JFrame implements Runnable {
         playerTwo = new Rect(Constants.SCREEN_WIDTH-70,100, 10, 100);
         playerController2 = new PlayerController2(playerTwo, keyListener);
         ballRect = new Rect(Constants.SCREEN_WIDTH/2,Constants.SCREEN_HEIGHT/2,15,15);
-        ball = new Ball(ballRect, playerOne, playerTwo);
-        
+        ball = new Ball(ballRect, playerOne, playerTwo, this, playerController, playerController2);
+
+  
     }
 
     public void update(double dt){
@@ -52,9 +57,11 @@ public class Window extends JFrame implements Runnable {
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0 , Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
 
-        Font font = new Font("Times New Roman", Font.PLAIN,14);
-        Text text = new Text(Ball.score, font ,100,100);
+        Font font = new Font("Times New Roman", Font.PLAIN,30);
+        Text text = new Text("SCORE: "+score, font ,100,100);
+        Text text1 = new Text("SCORE: "+score1, font ,Constants.SCREEN_WIDTH - 230,100);
         text.draw(g2);
+        text1.draw(g2);
         playerOne.draw(g2);
         playerTwo.draw(g2);
         ballRect.draw(g2);
@@ -70,6 +77,21 @@ public class Window extends JFrame implements Runnable {
 
             update(deltaTime);
         }
+    }
+    public void scored(){
+        score = score + 1;
+        System.out.println("punoj");
+        Font font = new Font("Times New Roman", Font.PLAIN,20);
+        Text text = new Text(""+score, font ,100,100);
+        text.draw(g2);
+        
+    }
+    public void scored1(){
+        score1 = score1 + 1;
+        System.out.println("punoj1");
+        Font font = new Font("Times New Roman", Font.PLAIN,20);
+        Text text1 = new Text(""+score1, font ,Constants.SCREEN_WIDTH - 100,100);
+        text1.draw(g2);
     }
 }
 
